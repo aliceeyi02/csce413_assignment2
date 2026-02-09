@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Gateway | Secure Login</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="header">
+                <div class="logo">🛡️</div>
+                <h2>Login</h2>
+            </div>
+
+            {% if error %}
+            <div class="error-box">
+                <span class="error-icon">⚠️</span> {{ error }}
+            </div>
+            {% endif %}
+
+            <form method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Sign In</button>
+            </form>
+
+            <div class="footer-links">
+                <a href="#">Forgot Password?</a>
+                <span class="divider">|</span>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+        <p class="legal">© 2026 Enterprise Systems.</p>
+    </div>
+</body>
+</html>

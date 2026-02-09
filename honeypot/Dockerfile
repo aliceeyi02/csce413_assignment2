@@ -2,11 +2,14 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY honeypot.py .
+RUN pip install --no-cache-dir flask
 
-# Create logs directory
+COPY honeypot.py .
+COPY static/ ./static/
+COPY templates/ ./templates/ 
+
 RUN mkdir -p /app/logs
 
-EXPOSE 22
+EXPOSE 8080
 
 CMD ["python", "-u", "honeypot.py"]

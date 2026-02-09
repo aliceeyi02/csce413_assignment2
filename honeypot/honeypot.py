@@ -1,31 +1,52 @@
-#!/usr/bin/env python3
-"""Starter template for the honeypot assignment."""
-
-import logging
-import os
+from flask import Flask, render_template, request, g
+import datetime
 import time
+import os
 
-LOG_PATH = "/app/logs/honeypot.log"
+app = Flask(__name__)
+LOG_FILE = "/app/logs/honeypot.log"
 
+@app.before_request
+def start_timer():
+    # Record the exact microsecond the request hits the server
+    g.start_time = time.time()
 
-def setup_logging():
-    os.makedirs("/app/logs", exist_ok=True)
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        handlers=[logging.FileHandler(LOG_PATH), logging.StreamHandler()],
-    )
+@app.after_request
+def log_everything(response):
+    # Calculate duration
+    duration = time.time() - g.start_time
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Get Source IP and Port
+    # Note: request.environ gets the underlying WSGI details
+    ip = request.remote_addr
+    port = request.environ.get('REMOTE_PORT', '0000') 
+    
+    # Capture Auth Attempts
+    username = request.form.get('username', '-')
+    password = request.form.get('password', '-')
+    
+    # Capture Data/Commands (Raw body or form data)
+    path = request.path
+    method = request.method
+    
+    # Format: Timestamp | IP:Port | Duration | Method/Path | User:Pass
+    log_entry = (f"[{timestamp}] SRC: {ip}:{port} | DUR: {duration:.4f}s | "
+                 f"ACTION: {method} {path} | AUTH: {username}:{password}\n")
 
+    # Ensure log directory exists and write
+    os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+    with open(LOG_FILE, "a") as f:
+        f.write(log_entry)
+        
+    return response
 
-def run_honeypot():
-    logger = logging.getLogger("Honeypot")
-    logger.info("Honeypot starter template running.")
-    logger.info("TODO: Implement protocol simulation, logging, and alerting.")
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    error = None
+    if request.method == 'POST':
+        error = "Critical Error: Database Connection Timed Out. Please try again later."
+    return render_template('index.html', error=error)
 
-    while True:
-        time.sleep(60)
-
-
-if __name__ == "__main__":
-    setup_logging()
-    run_honeypot()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)

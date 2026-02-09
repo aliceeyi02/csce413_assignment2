@@ -1,0 +1,168 @@
+# Nmap 7.94SVN scan initiated Sun Feb  8 21:09:08 2026 as: nmap -p- -sV -T4 -A -oN full_recon_scan.txt 172.20.0.0/27
+Nmap scan report for assignment2 (172.20.0.1)
+Host is up (0.00020s latency).
+Not shown: 65532 closed tcp ports (conn-refused)
+PORT     STATE    SERVICE        VERSION
+22/tcp   open     ssh            OpenSSH 9.6p1 Ubuntu 3ubuntu13.14 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 0e:4d:1f:d7:43:04:4c:90:39:ac:21:12:3c:fc:09:bb (ECDSA)
+|_  256 f3:15:52:19:9a:66:c4:28:cd:ee:c2:2a:a4:57:a0:fb (ED25519)
+2222/tcp filtered EtherNetIP-1
+5001/tcp open     commplex-link?
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.1.5 Python/3.11.14
+|     Date: Sun, 08 Feb 2026 21:09:29 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 5324
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <title>Network Security Lab - User Management</title>
+|     <style>
+|     margin: 0;
+|     padding: 0;
+|     box-sizing: border-box;
+|     body {
+|     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+|     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+|     min-height: 100vh;
+|     padding: 20px;
+|     .container {
+|     max-width: 1200px;
+|     margin: 0 auto;
+|     background: white;
+|     border-radius: 10px;
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.1.5 Python/3.11.14
+|     Date: Sun, 08 Feb 2026 21:09:29 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, HEAD, OPTIONS
+|     Content-Length: 0
+|_    Connection: close
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port5001-TCP:V=7.94SVN%I=7%D=2/8%Time=6988FB89%P=aarch64-unknown-linux-
+SF:gnu%r(GetRequest,157C,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\
+SF:.1\.5\x20Python/3\.11\.14\r\nDate:\x20Sun,\x2008\x20Feb\x202026\x2021:0
+SF:9:29\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-
+SF:Length:\x205324\r\nConnection:\x20close\r\n\r\n<!DOCTYPE\x20html>\n<htm
+SF:l\x20lang=\"en\">\n<head>\n\x20\x20\x20\x20<meta\x20charset=\"UTF-8\">\
+SF:n\x20\x20\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=device-w
+SF:idth,\x20initial-scale=1\.0\">\n\x20\x20\x20\x20<title>Network\x20Secur
+SF:ity\x20Lab\x20-\x20User\x20Management</title>\n\x20\x20\x20\x20<style>\
+SF:n\x20\x20\x20\x20\x20\x20\x20\x20\*\x20{\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20margin:\x200;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20padding:\x200;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20box-sizing:\x20border-box;\n\x20\x20\x20\x20\x20\x20\x20\x20}\n\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\n\x20\x20\x20\x20\x20\x20\x20\x20body\x20{
+SF:\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-family:\x20'Sego
+SF:e\x20UI',\x20Tahoma,\x20Geneva,\x20Verdana,\x20sans-serif;\n\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20background:\x20linear-gradient\(13
+SF:5deg,\x20#667eea\x200%,\x20#764ba2\x20100%\);\n\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20min-height:\x20100vh;\n\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20padding:\x2020px;\n\x20\x20\x20\x20\x20\x20\x20
+SF:\x20}\n\x20\x20\x20\x20\x20\x20\x20\x20\n\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\.container\x20{\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20max
+SF:-width:\x201200px;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20mar
+SF:gin:\x200\x20auto;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bac
+SF:kground:\x20white;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bor
+SF:der-radius:\x2010px;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20b
+SF:")%r(HTTPOptions,C8,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\.1
+SF:\.5\x20Python/3\.11\.14\r\nDate:\x20Sun,\x2008\x20Feb\x202026\x2021:09:
+SF:29\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nAllow:\x20
+SF:GET,\x20HEAD,\x20OPTIONS\r\nContent-Length:\x200\r\nConnection:\x20clos
+SF:e\r\n\r\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for 172.20.0.10
+Host is up (0.00022s latency).
+Not shown: 65534 closed tcp ports (conn-refused)
+PORT     STATE SERVICE VERSION
+5000/tcp open  upnp?
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Server: Werkzeug/3.1.5 Python/3.11.14
+|     Date: Sun, 08 Feb 2026 21:09:19 GMT
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 5324
+|     Connection: close
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="UTF-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+|     <title>Network Security Lab - User Management</title>
+|     <style>
+|     margin: 0;
+|     padding: 0;
+|     box-sizing: border-box;
+|     body {
+|     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+|     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+|     min-height: 100vh;
+|     padding: 20px;
+|     .container {
+|     max-width: 1200px;
+|     margin: 0 auto;
+|     background: white;
+|     border-radius: 10px;
+|   RTSPRequest: 
+|     <!DOCTYPE HTML>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>Error response</title>
+|     </head>
+|     <body>
+|     <h1>Error response</h1>
+|     <p>Error code: 400</p>
+|     <p>Message: Bad request version ('RTSP/1.0').</p>
+|     <p>Error code explanation: 400 - Bad request syntax or unsupported method.</p>
+|     </body>
+|_    </html>
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port5000-TCP:V=7.94SVN%I=7%D=2/8%Time=6988FB7F%P=aarch64-unknown-linux-
+SF:gnu%r(GetRequest,157C,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\
+SF:.1\.5\x20Python/3\.11\.14\r\nDate:\x20Sun,\x2008\x20Feb\x202026\x2021:0
+SF:9:19\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-
+SF:Length:\x205324\r\nConnection:\x20close\r\n\r\n<!DOCTYPE\x20html>\n<htm
+SF:l\x20lang=\"en\">\n<head>\n\x20\x20\x20\x20<meta\x20charset=\"UTF-8\">\
+SF:n\x20\x20\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=device-w
+SF:idth,\x20initial-scale=1\.0\">\n\x20\x20\x20\x20<title>Network\x20Secur
+SF:ity\x20Lab\x20-\x20User\x20Management</title>\n\x20\x20\x20\x20<style>\
+SF:n\x20\x20\x20\x20\x20\x20\x20\x20\*\x20{\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20margin:\x200;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20padding:\x200;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20box-sizing:\x20border-box;\n\x20\x20\x20\x20\x20\x20\x20\x20}\n\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\n\x20\x20\x20\x20\x20\x20\x20\x20body\x20{
+SF:\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-family:\x20'Sego
+SF:e\x20UI',\x20Tahoma,\x20Geneva,\x20Verdana,\x20sans-serif;\n\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20background:\x20linear-gradient\(13
+SF:5deg,\x20#667eea\x200%,\x20#764ba2\x20100%\);\n\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20min-height:\x20100vh;\n\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20padding:\x2020px;\n\x20\x20\x20\x20\x20\x20\x20
+SF:\x20}\n\x20\x20\x20\x20\x20\x20\x20\x20\n\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\.container\x20{\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20max
+SF:-width:\x201200px;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20mar
+SF:gin:\x200\x20auto;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bac
+SF:kground:\x20white;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bor
+SF:der-radius:\x2010px;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20b
+SF:")%r(RTSPRequest,16C,"<!DOCTYPE\x20HTML>\n<html\x20lang=\"en\">\n\x20\x
+SF:20\x20\x20<head>\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20charset=\"ut
+SF:f-8\">\n\x20\x20\x20\x20\x20\x20\x20\x20<title>Error\x20response</title
+SF:>\n\x20\x20\x20\x20</head>\n\x20\x20\x20\x20<body>\n\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20<h1>Error\x20response</h1>\n\x20\x20\x20\x20\x20\x20\x20\x
+SF:20<p>Error\x20code:\x20400</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Mess
+SF:age:\x20Bad\x20request\x20version\x20\('RTSP/1\.0'\)\.</p>\n\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20<p>Error\x20code\x20explanation:\x20400\x20-\x20Ba
+SF:d\x20request\x20syntax\x20or\x20unsupported\x20method\.</p>\n\x20\x20\x
+SF:20\x20</body>\n</html>\n");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Feb  8 21:10:46 2026 -- 32 IP addresses (2 hosts up) scanned in 98.11 seconds

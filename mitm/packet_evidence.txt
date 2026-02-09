@@ -1,0 +1,39 @@
+MITM Documentation
+
+1. Capture Workflow
+
+sudo tcpdump -i br-04696879a515 -A -s 0 'port 3306'
+
+Traffic intercepted with tcpdump on the Docker bridge network in order 
+to connect the web application (172.20.0.10) to the database container 
+(172.20.0.11). 
+
+2. Vulnerability
+
+Cleartext Transmission of Sensitive Information (CWE-319)
+
+The database communication is unencrypted. The MySQL protocol 
+handshake and data transfer are visible in ASCII format. No TLS/SSL 
+encryption is enforced, allowing for passive interception of SQL 
+queries and table results.
+
+3. Data
+
+SQL Query:
+    SELECT id, secret_name, secret_value, description 
+    FROM secrets WHERE id = 1;
+
+Result:
+    {
+      "id": 1,
+      "secret_name": "api_token",
+      "secret_value": "FLAG{n3tw0rk_tr4ff1c_1s_n0t_s3cur3}",
+      "description": "API authentication token for secret services"
+    }
+
+
+4. Impact
+
+Anyone on the network can have access to user data once they have the authentication 
+token during the connection. This experience is unsafe for the user because leaving data
+unencrypted results in a capture from a MITM attack.

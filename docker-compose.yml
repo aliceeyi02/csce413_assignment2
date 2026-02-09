@@ -83,22 +83,20 @@ services:
       vulnerable_network:
         ipv4_address: 172.20.0.22
 
-  # TODO: Feel free to update honeypot if needed
   honeypot:
-    container_name: 2_network_honeypot
-    build:
-      context: ./honeypot
-      network: host
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
-    ports:
-      - "2222:22"
-    networks:
-      vulnerable_network:
-        ipv4_address: 172.20.0.30
-    volumes:
-      - ./honeypot/logs:/app/logs
+      container_name: 2_network_honeypot
+      build:
+        context: ./honeypot
+      dns:
+        - 8.8.8.8
+        - 1.1.1.1
+      ports:
+        - "5002:8080"
+      networks:
+        vulnerable_network:
+          ipv4_address: 172.20.0.30
+      volumes:
+        - ./honeypot/logs:/app/logs
 
   # TODO: Feel free to update port_knocking if needed
   port_knocking:
