@@ -1,6 +1,0 @@
-# Nmap 7.94SVN scan initiated Sun Feb  8 20:37:05 2026 as: nmap -p 1-65535 -sV -oG scan_results.txt 172.20.0.0/27
-Host: 172.20.0.1 (assignment2)	Status: Up
-Host: 172.20.0.1 (assignment2)	Ports: 22/open/tcp//ssh//OpenSSH 9.6p1 Ubuntu 3ubuntu13.14 (Ubuntu Linux; protocol 2.0)/	Ignored State: closed (65534)
-Host: 172.20.0.10 ()	Status: Up
-Host: 172.20.0.10 ()	Ports: 5000/open/tcp//upnp?///	Ignored State: closed (65534)
-# Nmap done at Sun Feb  8 20:38:42 2026 -- 32 IP addresses (2 hosts up) scanned in 96.89 seconds

@@ -3,17 +3,18 @@ import sys
 import concurrent.futures
 from datetime import datetime
 import ipaddress
-import csv  # Added for CSV export
+import csv 
 
 def scan_port(target, port):
-    """Checks if a single port is open and grabs its banner."""
+    # checks for open port
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.settimeout(0.2)  # Reduced for faster scanning inside Docker
+            s.settimeout(0.2)
             if s.connect_ex((target, port)) == 0:
+                # banner grabbing
                 banner = "No banner"
                 try:
-                    s.sendall(b"Hello\r\n")
+                    s.sendall(b"howdy\r\n")
                     banner = s.recv(1024).decode(errors='ignore').strip().replace(',', ';')
                 except:
                     pass
@@ -23,17 +24,15 @@ def scan_port(target, port):
                 except:
                     service = "unknown"
                 
-                # Return target IP along with results for CSV mapping
                 return {"ip": target, "port": port, "service": service, "banner": banner}
     except:
         pass
     return None
 
 def scan_range(target, start_port, end_port):
-    """Scans a range of ports using multithreading."""
     open_ports = []
     print(f"[*] Scanning {target} from port {start_port} to {end_port}")
-
+    # multithreading to scan range of ports
     with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
         futures = {executor.submit(scan_port, target, port): port for port in range(start_port, end_port + 1)}
         for future in concurrent.futures.as_completed(futures):
@@ -69,7 +68,7 @@ def main():
         results = scan_range(t, start_port, end_port)
         total_found.extend(results)
 
-    # --- CSV Export Logic ---
+    # export to CSV file
     filename = f"scan_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
     keys = ["ip", "port", "service", "banner"]
     
